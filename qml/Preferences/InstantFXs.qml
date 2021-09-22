@@ -182,8 +182,8 @@ Module {
 			knob2	: { value: 0.5, min: 0.1, max: 1, delta: -6 },	
 			knob3	: { value: 0.5, min: 0, max: 0.9, delta: 5 },
 			button1	: 1,
-			button2	: 1,
-			button3	: 1
+			button2	: 0,
+			button3	: 0
 		},
 	//PadFX 1.7
 		{

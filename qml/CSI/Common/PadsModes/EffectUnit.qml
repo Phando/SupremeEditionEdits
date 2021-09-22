@@ -122,10 +122,10 @@ Module {
 			enabled = !enabled
 		}
 		
-		// NOTE : Uncomment to make Dynamic effects press+hold only
-		//if(!isDynamic(index)){
+		// NOTE : This if statement makes the Dynamic effects press+hold only
+		if(!isDynamic(index)){
 			pressTimer.restart()
-		//} 
+		} 
 		holdPadFX_tick.restart()
 	}
 
