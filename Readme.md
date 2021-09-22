@@ -14,9 +14,10 @@ This mod is based on the work of Aleix Jiménez and his badass [Supreme Edition 
 Static effects are routed to FX units 1 and 2 so they can be tweaked with the FX controls. Dynamic effects are routed to FX units 3 and 4. The Dynamic effects are intended to be on auto-pilot and are push+hold only. Knobs with float values will define static effects. Knobs with objects define dynamic effects. The dynamic effect
 descriptor takes a value, min, max and delta. The effect will start at the value and then progress at the rate defined by the delta (+ or -) till it hits the min or max. The smaller the delta the slower the value will build.
 
+You can customize the predefined effects or define your own in the qml/Preferences/InstantFXs.qml file
+
 ### Static Effects
 
-In the qml/Preferences/InstantFXs.qml file an example static effect could be defined as below.
 
 Single Effect:
 `
@@ -38,6 +39,7 @@ Single Effect:
 `
 
 Group Effect:
+
 `
 {
 	name : "Echo Fade Multi",
