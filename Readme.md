@@ -18,8 +18,8 @@ You can customize the predefined effects or define your own in the qml/Preferenc
 
 ### Static Effects
 
-
 Single Effect:
+
 `
 {  
 	name : "Echo Fade",
