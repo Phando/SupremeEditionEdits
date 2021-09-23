@@ -3,6 +3,8 @@
 
 This mod is based on the work of Aleix Jiménez and his badass [Supreme Edition Mod](https://www.patreon.com/supremeedition). 
 
+See it in action: [https://youtu.be/GomKd7v-qL8](https://youtu.be/GomKd7v-qL8)
+
 ### Features:
 
 * Fixed - where the effect is only enabled after the 2nd press.
