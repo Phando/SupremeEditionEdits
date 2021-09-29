@@ -4,8 +4,7 @@ import QtQuick 2.5
 import "../../../Preferences/"
 
 Module {
-	property int deck;
-    property int unit;
+	//id: effectUnit
 	property bool enabled: false
 	property int padIndex: -1
 	property int lastPadIndex: -1
@@ -14,6 +13,12 @@ Module {
 	property int frameInc: 100 * frameRate
     property int frameTime: 1000 / frameRate // ~= 33
 
+	property int deck: 0
+    //onDeckChanged: handleDeckChange()
+	
+	property int unit: 0
+	//onUnitChanged: handleDeckChange()
+	
     InstantFXs { name: "preferences"; id: preferences }
 	property var pads : preferences.pads
 	
@@ -34,30 +39,33 @@ Module {
 	AppProperty { id: button2; }
 	AppProperty { id: button3; }
 
-
 	// TODO : It would be nice to set 'deck' and unit from the EffectsMode doc directly without having to call 'init'
 	function init(_deck, _unit) {
 		deck = _deck
 		unit = _unit
+		
 		focusedDeck.path = "app.traktor.mixer.channels." + deck + ".fx.assign." + unit
 		unitMode.path = "app.traktor.fx." + unit + ".type"
-
-		knob0.path = "app.traktor.fx." + unit + ".dry_wet"
-		knob1.path = "app.traktor.fx." + unit + ".knobs.1"
-		knob2.path = "app.traktor.fx." + unit + ".knobs.2"
-		knob3.path = "app.traktor.fx." + unit + ".knobs.3"
-
-		effect1.path = "app.traktor.fx." + unit + ".select.1"
-		effect2.path = "app.traktor.fx." + unit + ".select.2"
-		effect3.path = "app.traktor.fx." + unit + ".select.3"
 
 		button0.path = "app.traktor.fx." + unit + ".enabled"
 		button1.path = "app.traktor.fx." + unit + ".buttons.1"
 		button2.path = "app.traktor.fx." + unit + ".buttons.2"
 		button3.path = "app.traktor.fx." + unit + ".buttons.3"
-	}
 
+		effect1.path = "app.traktor.fx." + unit + ".select.1"
+		effect2.path = "app.traktor.fx." + unit + ".select.2"
+		effect3.path = "app.traktor.fx." + unit + ".select.3"
+
+		knob0.path = "app.traktor.fx." + unit + ".dry_wet"
+		knob1.path = "app.traktor.fx." + unit + ".knobs.1"
+		knob2.path = "app.traktor.fx." + unit + ".knobs.2"
+		knob3.path = "app.traktor.fx." + unit + ".knobs.3"		
+	}
+	
     function isGroup(index){
+		if(typeof pads[index] == 'undefined'){
+			return false
+		}
 		return ( pads[index].effect2 > 0 ||  pads[index].effect3 > 0 )
 	}
 
@@ -174,5 +182,4 @@ Module {
 			knob3.value = getDelta(knob3.value, pads[padIndex].knob3)
 		}
 	}
-
 }

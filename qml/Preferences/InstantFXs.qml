@@ -206,13 +206,13 @@ Module {
 			name	: "Electro Flyby",
 			color	: colors.color16Bright,
 			led		: "colors.color16Bright",
-			effect1	: 8,	// Delay T3
-			effect2	: 21,	// Reverb T3
-			effect3	: 23,	// Digital Lofi
-			knob0	: 0.4,	// Dry Wet
-			knob1	: 0.35,
+			effect1	: 0,	// Empty
+			effect2	: 39,	// [M] Zzzurp
+			effect3	: 41,	// [M] Strrretch
+			knob0	: 0.7,	// Dry Wet
+			knob1	: 0,
 			knob2	: { value: 1, min: 0, max: 1, delta: -150 },
-			knob3	: { value: 0.0, min: 0, max: 1, delta: 150 },
+			knob3	: { value: 0, min: 0, max: 1, delta: 150 },
 			button1	: 0,
 			button2	: 0,
 			button3	: 0
