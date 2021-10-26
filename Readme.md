@@ -11,6 +11,11 @@ See it in action: [https://youtu.be/GomKd7v-qL8](https://youtu.be/GomKd7v-qL8)
 * Added - ability to use Single or Group effects
 * Added - ability to have Dynamic effects with 'animated' values
 
+## Required Setup
+
+- On the right side of your controller press *shift+deck* to view the effects settings
+- Assign FXUnit 2 to the top effects unit on the right side.
+
 ## Static and Dynamic Effects
 
 Static effects are routed to FX units 1 and 2 so they can be tweaked with the FX controls. Dynamic effects are routed to FX units 3 and 4. The Dynamic effects are intended to be on auto-pilot and are push+hold only. Knobs with float values will define static effects. Knobs with objects define dynamic effects. The dynamic effect
@@ -25,8 +30,7 @@ Single Effect:
 `
 {  
 	name : "Echo Fade",
-	color :  colors.color08Bright,
-	led	 : "colors.color08Bright",
+	color : "color08",
 	effect1 : 1, /* Delay */
 	effect2 : 0,
 	effect3 : 0,
@@ -45,8 +49,7 @@ Group Effect:
 `
 {
 	name : "Echo Fade Multi",
-	color: colors.color09Bright,
-	led	 : "colors.color09Bright",
+	color : "color09",
 	effect1 : 7,	/* Beatmasher2 */
 	effect2 : 38,	/* Event Horizon */
 	effect3 : 14,	/* Filter:92 */
@@ -67,8 +70,7 @@ A dynamic effect has animated values. In order to make an effect dynamic, the kn
 `
 {
 	name : "Echo Fade Multi (4 BEATS)",
-	color : colors.color14Bright,
-	led : "colors.color14Bright",
+	color : "color14",
 	effect1 : 7,	/* Beatmasher2 */
 	effect2 : 38,	/* Event Horizon */
 	effect3 : 14,	/* Filter:92 */
@@ -81,3 +83,11 @@ A dynamic effect has animated values. In order to make an effect dynamic, the kn
 	button3 : 0
 },
 `
+
+### Issues
+
+Seeing the following errors/warnings on startup. They don't seem to effect runtime. 
+
+- qml/Screens/Defines/Colors.qml:513: TypeError: Value is undefined and could not be converted to an object
+- qml/Screens/Defines/Colors.qml:513: TypeError: Cannot read property 'low1' of undefined
+- qml/CSI/S5/S5Deck.qml:249:3: Unable to assign [undefined] to bool

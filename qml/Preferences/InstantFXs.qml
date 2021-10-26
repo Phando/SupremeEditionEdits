@@ -104,7 +104,7 @@ Module {
 		},
 	//PadFX 1.2
 	    { 
-			name	: "Echo Fade Multi",
+			name	: "Echo Multi",
 			color	: "color09",
 			effect1	: 7,	// Beatmasher2
 			effect2	: 38,	// Event Horizon
@@ -119,7 +119,7 @@ Module {
 		},
 	//PadFX 1.3
 	    { 
-			name	: "Techno Phil / Vocal Looper",
+			name	: "Techno Phil",
 			color	: "color10",
 			effect1	: 7,  	// Beatmasher2
 			effect2	: 25, 	// Transpose Stretch
@@ -149,7 +149,7 @@ Module {
 		},
 	//PadFX 1.5
 		{
-			name	: "Echo Fade (Auto)",
+			name	: "Echo Fade*",
 			color	: "color13",
 			effect1	: 1,	// Delay
 			effect2	: 0,
@@ -164,7 +164,7 @@ Module {
 		},
 	//PadFX 1.6
 		{
-			name	: "Echo Fade Multi (4 BEATS)",
+			name	: "Echo Multi*",
 			color	: "color14",
 			effect1	: 7,	// Beatmasher2
 			effect2	: 38,	// Event Horizon
@@ -179,7 +179,7 @@ Module {
 		},
 	//PadFX 1.7
 		{
-			name	: "FILTER PULSE",
+			name	: "Filter Pulse*",
 			color	: "color15",
 			effect1	: 6,	// Gater
 			effect2	: 23,	// Digital Lofi
@@ -194,7 +194,7 @@ Module {
 		},
 	//PadFX 1.8
 		{
-			name	: "Electro Flyby",
+			name	: "Electro Flyby*",
 			color	: "color16",
 			effect1	: 0,	// Empty
 			effect2	: 39,	// [M] Zzzurp
@@ -218,7 +218,7 @@ Module {
 	//PadFX 2.1
 		{
 			name	: "Echo Fade",
-			color	: "color08",
+			color	: "color01",
 			effect1	: 1,	// Delay
 			effect2	: 0,
 			effect3	: 0,
@@ -232,7 +232,7 @@ Module {
 		},
 	//PadFX 2.2
 	    { 
-			name	: "Echo Fade Multi",
+			name	: "Echo Multi",
 			color	: "color09",
 			effect1	: 7,	// Beatmasher2
 			effect2	: 38,	// Event Horizon
@@ -247,7 +247,7 @@ Module {
 		},
 	//PadFX 2.3
 	    { 
-			name	: "Techno Phil / Vocal Looper",
+			name	: "Techno Phil",
 			color	: "color10",
 			effect1	: 7,  	// Beatmasher2
 			effect2	: 25, 	// Transpose Stretch
@@ -277,7 +277,7 @@ Module {
 		},
 	//PadFX 2.5
 		{
-			name	: "Echo Fade (Auto)",
+			name	: "Echo Fade*",
 			color	: "color13",
 			effect1	: 1,	// Delay
 			effect2	: 0,
@@ -292,7 +292,7 @@ Module {
 		},
 	//PadFX 2.6
 		{
-			name	: "Echo Fade Multi (4 BEATS)",
+			name	: "Echo Multi*",
 			color	: "color14",
 			effect1	: 7,	// Beatmasher2
 			effect2	: 38,	// Event Horizon
@@ -307,7 +307,7 @@ Module {
 		},
 	//PadFX 2.7
 		{
-			name	: "FILTER PULSE",
+			name	: "Filter Pulse*",
 			color	: "color15",
 			effect1	: 6,	// Gater
 			effect2	: 23,	// Digital Lofi
@@ -322,7 +322,7 @@ Module {
 		},
 	//PadFX 2.8
 		{
-			name	: "Electro Flyby",
+			name	: "Electro Flyby*",
 			color	: "color16",
 			effect1	: 0,	// Empty
 			effect2	: 39,	// [M] Zzzurp
@@ -336,28 +336,6 @@ Module {
 			button3	: 0
 		}
 	]
-
-	// Hex Colors for Screens
-	function screenColor(index) {
-		let colorName = pads[index].color
-		if (colorName == "color01") return colors.color01Bright
-		if (colorName == "color02") return colors.color02Bright
-		if (colorName == "color03") return colors.color03Bright
-		if (colorName == "color04") return colors.color04Bright
-		if (colorName == "color05") return colors.color05Bright
-		if (colorName == "color06") return colors.color06Bright
-		if (colorName == "color07") return colors.color07Bright
-		if (colorName == "color08") return colors.color08Bright
-		if (colorName == "color09") return colors.color09Bright
-		if (colorName == "color10") return colors.color10Bright
-		if (colorName == "color11") return colors.color11Bright
-		if (colorName == "color12") return colors.color12Bright
-		if (colorName == "color13") return colors.color13Bright
-		if (colorName == "color14") return colors.color14Bright
-		if (colorName == "color15") return colors.color15Bright
-		if (colorName == "color16") return colors.color16Bright
-		return color.colorWhite
-	}
 
 	// LED Colors for Pads
 	function ledColor(index) {
@@ -379,5 +357,27 @@ Module {
 		if (colorName == "color15") return Color.Magenta
 		if (colorName == "color16") return Color.Fuchsia
 		return Color.White
+	}
+
+	// Hex Colors for screen panels
+	function screenColor(index) {
+		let colorName = pads[index].color
+		if (colorName == "color01") return colors.color01Bright
+		if (colorName == "color02") return colors.color02Bright
+		if (colorName == "color03") return colors.color03Bright
+		if (colorName == "color04") return colors.color04Bright
+		if (colorName == "color05") return colors.color05Bright
+		if (colorName == "color06") return colors.color06Bright
+		if (colorName == "color07") return colors.color07Bright
+		if (colorName == "color08") return colors.color08Bright
+		if (colorName == "color09") return colors.color09Bright
+		if (colorName == "color10") return colors.color10Bright
+		if (colorName == "color11") return colors.color11Bright
+		if (colorName == "color12") return colors.color12Bright
+		if (colorName == "color13") return colors.color13Bright
+		if (colorName == "color14") return colors.color14Bright
+		if (colorName == "color15") return colors.color15Bright
+		if (colorName == "color16") return colors.color16Bright
+		return color.colorWhite
 	}
 }
