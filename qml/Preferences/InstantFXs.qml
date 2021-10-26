@@ -1,7 +1,7 @@
 import CSI 1.0
 import QtQuick 2.5
 
-import "../Screens/Defines"
+import '../Screens/Defines'
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 // Dynamic Effects
@@ -57,7 +57,6 @@ Here are the numbers that are associated to each color.
   Color 09 --> Cyan			Color 10 --> Turquoise			Color 11 --> Blue				Color 12 --> Plum
   Color 13 --> Violet		Color 14 --> Purple				Color 15 --> Magenta			Color 16 --> Fuchsia
   
-Please, for the 'color' and 'led', only modify the number so that the colors are displayed correctly on the S8. 
 */
 
 //-----------------------------------------------------------------------------------------------------------------------------------
@@ -80,9 +79,8 @@ Please, for the 'color' and 'led', only modify the number so that the colors are
 */
 
 Module {
-
-	// TODO : Not sure we need 'color' and 'led' on the pad definitions
-    Colors { name: "colors"; id: colors }
+	id: instantFX
+	Colors { name: "colors"; id: colors }
 
 //-----------------------------------------------------------------------------------------------------------------------------------
 // PAD FX - SLOT 1
@@ -92,8 +90,7 @@ Module {
 	//PadFX 1.1
 		{
 			name	: "Echo Fade",
-			color	: colors.color08Bright,
-			led		: "colors.color08Bright",
+			color	: "color08",
 			effect1	: 1,	// Delay
 			effect2	: 0,
 			effect3	: 0,
@@ -108,8 +105,7 @@ Module {
 	//PadFX 1.2
 	    { 
 			name	: "Echo Fade Multi",
-			color	: colors.color09Bright,
-			led		: "colors.color09Bright",
+			color	: "color09",
 			effect1	: 7,	// Beatmasher2
 			effect2	: 38,	// Event Horizon
 			effect3	: 14,	// Filter:92
@@ -124,8 +120,7 @@ Module {
 	//PadFX 1.3
 	    { 
 			name	: "Techno Phil / Vocal Looper",
-			color	: colors.color10Bright,
-			led		: "colors.color10Bright",
+			color	: "color10",
 			effect1	: 7,  	// Beatmasher2
 			effect2	: 25, 	// Transpose Stretch
 			effect3	: 14, 	// Filter92  
@@ -140,8 +135,7 @@ Module {
 	//PadFX 1.4
 	    { 
 			name	: "Space Toys",
-			color	: colors.color11Bright,
-			led		: "colors.color11Bright",
+			color	: "color11",
 			effect1	: 6,	// Gater
 			effect2	: 27,	// Formant Filter
 			effect3	: 28,	// Peak Filter
@@ -156,8 +150,7 @@ Module {
 	//PadFX 1.5
 		{
 			name	: "Echo Fade (Auto)",
-			color	: colors.color13Bright,
-			led		: "colors.color13Bright",
+			color	: "color13",
 			effect1	: 1,	// Delay
 			effect2	: 0,
 			effect3	: 0,
@@ -172,8 +165,7 @@ Module {
 	//PadFX 1.6
 		{
 			name	: "Echo Fade Multi (4 BEATS)",
-			color	: colors.color14Bright,
-			led		: "colors.color14Bright",
+			color	: "color14",
 			effect1	: 7,	// Beatmasher2
 			effect2	: 38,	// Event Horizon
 			effect3	: 14,	// Filter:92
@@ -188,8 +180,7 @@ Module {
 	//PadFX 1.7
 		{
 			name	: "FILTER PULSE",
-			color	: colors.color15Bright,
-			led		: "colors.color15Bright",
+			color	: "color15",
 			effect1	: 6,	// Gater
 			effect2	: 23,	// Digital Lofi
 			effect3	: 37,	// PolarWind
@@ -204,8 +195,7 @@ Module {
 	//PadFX 1.8
 		{
 			name	: "Electro Flyby",
-			color	: colors.color16Bright,
-			led		: "colors.color16Bright",
+			color	: "color16",
 			effect1	: 0,	// Empty
 			effect2	: 39,	// [M] Zzzurp
 			effect3	: 41,	// [M] Strrretch
@@ -228,8 +218,7 @@ Module {
 	//PadFX 2.1
 		{
 			name	: "Echo Fade",
-			color	: colors.color08Bright,
-			led		: "colors.color08Bright",
+			color	: "color08",
 			effect1	: 1,	// Delay
 			effect2	: 0,
 			effect3	: 0,
@@ -244,8 +233,7 @@ Module {
 	//PadFX 2.2
 	    { 
 			name	: "Echo Fade Multi",
-			color	: colors.color09Bright,
-			led		: "colors.color09Bright",
+			color	: "color09",
 			effect1	: 7,	// Beatmasher2
 			effect2	: 38,	// Event Horizon
 			effect3	: 14,	// Filter:92
@@ -260,8 +248,7 @@ Module {
 	//PadFX 2.3
 	    { 
 			name	: "Techno Phil / Vocal Looper",
-			color	: colors.color10Bright,
-			led		: "colors.color10Bright",
+			color	: "color10",
 			effect1	: 7,  	// Beatmasher2
 			effect2	: 25, 	// Transpose Stretch
 			effect3	: 14, 	// Filter92  
@@ -276,8 +263,7 @@ Module {
 	//PadFX 2.4
 	    { 
 			name	: "Space Toys",
-			color	: colors.color11Bright,
-			led		: "colors.color11Bright",
+			color	: "color11",
 			effect1	: 6,	// Gater
 			effect2	: 27,	// Formant Filter
 			effect3	: 28,	// Peak Filter
@@ -292,8 +278,7 @@ Module {
 	//PadFX 2.5
 		{
 			name	: "Echo Fade (Auto)",
-			color	: colors.color13Bright,
-			led		: "colors.color13Bright",
+			color	: "color13",
 			effect1	: 1,	// Delay
 			effect2	: 0,
 			effect3	: 0,
@@ -308,8 +293,7 @@ Module {
 	//PadFX 2.6
 		{
 			name	: "Echo Fade Multi (4 BEATS)",
-			color	: colors.color14Bright,
-			led		: "colors.color14Bright",
+			color	: "color14",
 			effect1	: 7,	// Beatmasher2
 			effect2	: 38,	// Event Horizon
 			effect3	: 14,	// Filter:92
@@ -318,14 +302,13 @@ Module {
 			knob2	: { value: 0.5, min: 0.1, max: 1, delta: -6 },	
 			knob3	: { value: 0.5, min: 0, max: 0.9, delta: 5 },
 			button1	: 1,
-			button2	: 1,
-			button3	: 1
+			button2	: 0,
+			button3	: 0
 		},
 	//PadFX 2.7
 		{
 			name	: "FILTER PULSE",
-			color	: colors.color15Bright,
-			led		: "colors.color15Bright",
+			color	: "color15",
 			effect1	: 6,	// Gater
 			effect2	: 23,	// Digital Lofi
 			effect3	: 37,	// PolarWind
@@ -340,19 +323,61 @@ Module {
 	//PadFX 2.8
 		{
 			name	: "Electro Flyby",
-			color	: colors.color16Bright,
-			led		: "colors.color16Bright",
-			effect1	: 8,	// Delay T3
-			effect2	: 21,	// Reverb T3
-			effect3	: 23,	// Digital Lofi
-			knob0	: 0.4,	// Dry Wet
-			knob1	: 0.35,
+			color	: "color16",
+			effect1	: 0,	// Empty
+			effect2	: 39,	// [M] Zzzurp
+			effect3	: 41,	// [M] Strrretch
+			knob0	: 0.7,	// Dry Wet
+			knob1	: 0,
 			knob2	: { value: 1, min: 0, max: 1, delta: -150 },
-			knob3	: { value: 0.0, min: 0, max: 1, delta: 150 },
+			knob3	: { value: 0, min: 0, max: 1, delta: 150 },
 			button1	: 0,
 			button2	: 0,
 			button3	: 0
 		}
 	]
-	
+
+	// Hex Colors for Screens
+	function screenColor(index) {
+		let colorName = pads[index].color
+		if (colorName == "color01") return colors.color01Bright
+		if (colorName == "color02") return colors.color02Bright
+		if (colorName == "color03") return colors.color03Bright
+		if (colorName == "color04") return colors.color04Bright
+		if (colorName == "color05") return colors.color05Bright
+		if (colorName == "color06") return colors.color06Bright
+		if (colorName == "color07") return colors.color07Bright
+		if (colorName == "color08") return colors.color08Bright
+		if (colorName == "color09") return colors.color09Bright
+		if (colorName == "color10") return colors.color10Bright
+		if (colorName == "color11") return colors.color11Bright
+		if (colorName == "color12") return colors.color12Bright
+		if (colorName == "color13") return colors.color13Bright
+		if (colorName == "color14") return colors.color14Bright
+		if (colorName == "color15") return colors.color15Bright
+		if (colorName == "color16") return colors.color16Bright
+		return color.colorWhite
+	}
+
+	// LED Colors for Pads
+	function ledColor(index) {
+		let colorName = pads[index].color
+		if (colorName == "color01") return Color.Red
+		if (colorName == "color02") return Color.DarkOrange
+		if (colorName == "color03") return Color.LightOrange
+		if (colorName == "color04") return Color.WarmYellow
+		if (colorName == "color05") return Color.Yellow
+		if (colorName == "color06") return Color.Lime
+		if (colorName == "color07") return Color.Green
+		if (colorName == "color08") return Color.Mint
+		if (colorName == "color09") return Color.Cyan
+		if (colorName == "color10") return Color.Turquoise
+		if (colorName == "color11") return Color.Blue
+		if (colorName == "color12") return Color.Plum
+		if (colorName == "color13") return Color.Violet
+		if (colorName == "color14") return Color.Purple
+		if (colorName == "color15") return Color.Magenta
+		if (colorName == "color16") return Color.Fuchsia
+		return Color.White
+	}
 }

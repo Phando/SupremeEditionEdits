@@ -17,9 +17,8 @@ then
     exit
 fi
 
-mkdir -p ./qml/CSI/Common/PadsModes
-mkdir -p ./qml/Preferences
-
+cp ./qml/Screens/S4MK3/Views/Widgets/PerformancePanel.qml "$target/qml/Screens/S4MK3/Views/Widgets"
+cp ./qml/Screens/S8/Views/Widgets/PerformancePanel.qml "$target/qml/Screens/S8/Views/Widgets"
 cp ./qml/CSI/Common/PadsModes/*.qml "$target/qml/CSI/Common/PadsModes" 
 cp ./qml/Preferences/InstantFXs.qml "$target/qml/Preferences" 
 
