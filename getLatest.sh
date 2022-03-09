@@ -17,13 +17,11 @@ then
     exit
 fi
 
-mkdir -p ./qml/Screens/S4MK3/Views/Widgets
-mkdir -p ./qml/Screens/S8/Views/Widgets
+mkdir -p ./qml/Screens/Shared/Widgets
 mkdir -p ./qml/CSI/Common/PadsModes
 mkdir -p ./qml/Preferences
 
-cp "$target/qml/Screens/S4MK3/Views/Widgets/PerformancePanel.qml" ./qml/Screens/S4MK3/Views/Widgets
-cp "$target/qml/Screens/S8/Views/Widgets/PerformancePanel.qml" ./qml/Screens/S8/Views/Widgets
+cp "$target/qml/Screens/Shared/Widgets/PerformancePanel.qml" ./qml/Screens/Shared/Widgets
 cp "$target/qml/CSI/Common/PadsModes/EffectsMode.qml" ./qml/CSI/Common/PadsModes
 cp "$target/qml/CSI/Common/PadsModes/EffectUnit.qml" ./qml/CSI/Common/PadsModes
 cp "$target/qml/Preferences/InstantFXs.qml" ./qml/Preferences

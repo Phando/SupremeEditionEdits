@@ -1,10 +1,11 @@
 import CSI 1.0
 import QtQuick 2.5
 
-import "../../../Preferences/"
+import "../../../Preferences"
 
 Module {
-	//id: effectUnit
+	id: effectUnit
+	
 	property bool enabled: false
 	property int padIndex: -1
 	property int lastPadIndex: -1
@@ -39,10 +40,8 @@ Module {
 	AppProperty { id: button2; }
 	AppProperty { id: button3; }
 
-	// TODO : It would be nice to set 'deck' and unit from the EffectsMode doc directly without having to call 'init'
-	function init(_deck, _unit) {
-		deck = _deck
-		unit = _unit
+	Component.onCompleted: {
+		unit += deck % 2 == 0 ? 2 : 1
 		
 		focusedDeck.path = "app.traktor.mixer.channels." + deck + ".fx.assign." + unit
 		unitMode.path = "app.traktor.fx." + unit + ".type"
@@ -59,7 +58,7 @@ Module {
 		knob0.path = "app.traktor.fx." + unit + ".dry_wet"
 		knob1.path = "app.traktor.fx." + unit + ".knobs.1"
 		knob2.path = "app.traktor.fx." + unit + ".knobs.2"
-		knob3.path = "app.traktor.fx." + unit + ".knobs.3"		
+		knob3.path = "app.traktor.fx." + unit + ".knobs.3"	
 	}
 	
     function isGroup(index){
@@ -131,9 +130,9 @@ Module {
 		}
 		
 		// NOTE : This if statement makes the Dynamic effects press+hold only
-		if(!isDynamic(index)){
+		if(!isDynamic(index))
 			pressTimer.restart()
-		} 
+		
 		holdPadFX_tick.restart()
 	}
 
@@ -150,18 +149,18 @@ Module {
 		disable(index)
 	}
 
-	function getDelta(value, data){
+	function getDelta(value, payload){
 		// If the knob is not dynamic do not increment the value
-		if (!isKnobDynamic(data)) {
-			return data
+		if (!isKnobDynamic(payload)) {
+			return payload
 		}
 
-		value += data.delta/frameInc
+		value += payload.delta/frameInc
 		
-		if(value >= data.max){
-			value = data.max
-		} else if(value <= data.min){
-			value = data.min
+		if(value >= payload.max){
+			value = payload.max
+		} else if(value <= payload.min){
+			value = payload.min
 		}
 
 		return value
