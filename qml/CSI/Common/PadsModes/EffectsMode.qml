@@ -16,9 +16,8 @@ Module {
 	property bool shift : false;
 	property bool enabled : false;
 	
-    property int deckId;
-    property int unit : deckId % 2 == 0 ? 2 : 1;
-
+    property int deckId : 0;
+    
    	InstantFXs { id: effects }
 	property var pads : effects.pads
 	
@@ -39,8 +38,8 @@ Module {
     // FX Units
 	//-----------------------------------------------------------------------------------------------------------------------------------
 
-	EffectUnit { id: fxUnit1; deck: deckId; unit: 0 } 
-	EffectUnit { id: fxUnit2; deck: deckId; unit: 2 }
+	EffectUnit { id: fxUnit1; unit: 0 } 
+	EffectUnit { id: fxUnit2; unit: 2 }
 
 	// PAD Setup
 	//-----------------------------------------------------------------------------------------------------------------------------------

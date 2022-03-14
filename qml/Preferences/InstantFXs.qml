@@ -68,9 +68,9 @@ Module {
 		knob1	: 0.5,
 		knob2	: 0.5,
 		knob3	: 0.4,
-		button1	: 0,
-		button2	: 1,
-		button3	: 0
+		button1	: 0, // Off
+		button2	: 1, // On
+		button3	: 0  // Off
 	},
 	{ 
 		// PadFX 1.2

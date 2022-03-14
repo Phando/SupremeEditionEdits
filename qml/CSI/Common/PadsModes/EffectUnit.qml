@@ -9,9 +9,7 @@ Module {
 	property int frameInc: 100 * frameRate
     property int frameTime: 1000 / frameRate // ~= 33
 
-	property int deck: 0
-    property int unit: 0
-	
+	property int unit: 0	
     property var pad : null;
 	property var lastPad : null;
 	
@@ -27,15 +25,17 @@ Module {
 	AppProperty { id: effect1; } 
 	AppProperty { id: effect2; } 
 	AppProperty { id: effect3; } 
-	AppProperty { id: button0; }
-	AppProperty { id: button1; }
-	AppProperty { id: button2; }
-	AppProperty { id: button3; }
+	AppProperty { id: button0; onValueChanged: handleButton(button0); }
+	AppProperty { id: button1; onValueChanged: handleButton(button1); }
+	AppProperty { id: button2; onValueChanged: handleButton(button2); }
+	AppProperty { id: button3; onValueChanged: handleButton(button3); }
+
+	//-----------------------------------------------------------------------------------------------------------------------------------
 
 	Component.onCompleted: {
-		unit += deck % 2 == 0 ? 2 : 1
+		unit += deckId % 2 == 0 ? 2 : 1
 		
-		focusedDeck.path = "app.traktor.mixer.channels." + deck + ".fx.assign." + unit
+		focusedDeck.path = "app.traktor.mixer.channels." + deckId + ".fx.assign." + unit
 		unitMode.path = "app.traktor.fx." + unit + ".type"
 
 		button0.path = "app.traktor.fx." + unit + ".enabled"
@@ -51,18 +51,28 @@ Module {
 		knob1.path = "app.traktor.fx." + unit + ".knobs.1"
 		knob2.path = "app.traktor.fx." + unit + ".knobs.2"
 		knob3.path = "app.traktor.fx." + unit + ".knobs.3"	
+		// var str = JSON.stringify(button0);
+		// console.log(str);
 	}
 
+	//-----------------------------------------------------------------------------------------------------------------------------------
+	
 	function isDynamic(){
 		return unit >= 3
 	}
 
+	//-----------------------------------------------------------------------------------------------------------------------------------
+
     function isActive(){
+		if( pad == null ) return false
+		
 		if(pad.isGroup()){
 			return (button1.value || button2.value || button3.value)
 		}
 		return button0.value
 	}
+
+	//-----------------------------------------------------------------------------------------------------------------------------------
 
 	function enable(){
 		if(pad != lastPad || isDynamic()){
@@ -76,18 +86,36 @@ Module {
 		button1.value = pad.isKnob1Dynamic() ? true : pad.data.button1
 		button2.value = pad.isKnob2Dynamic() ? true : pad.data.button2
 		button3.value = pad.isKnob3Dynamic() ? true : pad.data.button3
+		
 		lastPad = pad
+		focusedDeck.value = true
 	}
 
+	//-----------------------------------------------------------------------------------------------------------------------------------
+
 	function disable(){
+		if(pad == null) return
+
+		focusedDeck.value = false
 		holdPadFX_tick.stop()
 		pad.enabled = false
 
 		button0.value = false
-		button1.value = false
+		button1.value = false 
 		button2.value = false
 		button3.value = false
 	}
+
+	//-----------------------------------------------------------------------------------------------------------------------------------
+
+	function handleButton(button) {
+		if(focusedDeck.value == false || (pad != null && pad.enabled == false)) return;
+
+		if(!isActive())
+			disable()
+	}
+
+	//-----------------------------------------------------------------------------------------------------------------------------------
 
 	function pressHandler(target){
 		// Determine the pad state
@@ -100,7 +128,6 @@ Module {
 			pad = target
 			pad.enabled = true
 
-			focusedDeck.value = deck
 			unitMode.value = pad.isGroup() ? FxType.Group : FxType.Single
 			effect1.value = pad.data.effect1
 			effect2.value = pad.data.effect2
@@ -117,6 +144,8 @@ Module {
 		holdPadFX_tick.restart()
 	}
 
+	//-----------------------------------------------------------------------------------------------------------------------------------
+
 	function releaseHander(index){
 		// Toggle Click
 		if (pressTimer.running){
@@ -129,6 +158,8 @@ Module {
 		// Hold Release
 		disable()
 	}
+
+	//-----------------------------------------------------------------------------------------------------------------------------------
 
 	function getDelta(value, payload){
 		// If the knob is not dynamic do not increment the value
@@ -146,6 +177,8 @@ Module {
 
 		return value
 	}
+
+	//-----------------------------------------------------------------------------------------------------------------------------------
 
 	function onTick(){
 		if(pad == null) return;

@@ -13,7 +13,7 @@ See it in action: [here](https://youtu.be/GomKd7v-qL8).
 * Added - ability to use Single or Group effects
 * Added - ability to have Dynamic effects with 'animated' values
 
-## Required Setup
+## :warning: Required Setup
 
 - On the right side of your controller press *shift+deck* to view the effects settings
 - Assign FXUnit 2 to the top effects unit on the right side.
