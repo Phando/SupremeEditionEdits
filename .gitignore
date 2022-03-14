@@ -1,3 +1,5 @@
 
 /ref
 .DS_Store
+/getLatest.sh
+/pushLatest.sh
