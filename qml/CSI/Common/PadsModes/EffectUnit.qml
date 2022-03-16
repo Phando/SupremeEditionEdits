@@ -2,19 +2,19 @@ import CSI 1.0
 import QtQuick 2.12
 
 Module {
-	//id: module
 	id: effectUnit
 	
 	property int frameRate: 30
 	property int frameInc: 100 * frameRate
     property int frameTime: 1000 / frameRate // ~= 33
 
-	property int unit: 0	
-    property var pad : null;
-	property var lastPad : null;
+	property int unit : 0	
+	property int changeStep : 0	
+	property var pad : null
 	
 	Timer { id: pressTimer; interval: holdTimer.value; repeat: false }
-	Timer { id: holdPadFX_tick; interval: frameTime; repeat: true; onTriggered: onTick() }
+	Timer { id: changeTimer; repeat: false; onTriggered: changeEffect() }
+	Timer { id: effectTimer; interval: frameTime; repeat: true; onTriggered: onTick() }
 	
 	AppProperty { id: focusedDeck; }
 	AppProperty { id: unitMode; }
@@ -25,10 +25,10 @@ Module {
 	AppProperty { id: effect1; } 
 	AppProperty { id: effect2; } 
 	AppProperty { id: effect3; } 
-	AppProperty { id: button0; onValueChanged: handleButton(button0); }
-	AppProperty { id: button1; onValueChanged: handleButton(button1); }
-	AppProperty { id: button2; onValueChanged: handleButton(button2); }
-	AppProperty { id: button3; onValueChanged: handleButton(button3); }
+	AppProperty { id: button0; }
+	AppProperty { id: button1; }
+	AppProperty { id: button2; }
+	AppProperty { id: button3; }
 
 	//-----------------------------------------------------------------------------------------------------------------------------------
 
@@ -51,55 +51,67 @@ Module {
 		knob1.path = "app.traktor.fx." + unit + ".knobs.1"
 		knob2.path = "app.traktor.fx." + unit + ".knobs.2"
 		knob3.path = "app.traktor.fx." + unit + ".knobs.3"	
-		// var str = JSON.stringify(button0);
-		// console.log(str);
-	}
-
-	//-----------------------------------------------------------------------------------------------------------------------------------
-	
-	function isDynamic(){
-		return unit >= 3
 	}
 
 	//-----------------------------------------------------------------------------------------------------------------------------------
 
     function isActive(){
-		if( pad == null ) return false
-		
-		if(pad.isGroup()){
+		if(pad != null && pad.isGroup()){
 			return (button1.value || button2.value || button3.value)
 		}
 		return button0.value
 	}
 
 	//-----------------------------------------------------------------------------------------------------------------------------------
+	
+	function changeEffect(){
+		changeStep += 1
+		
+		if(changeStep == 1){
+			// Changing the effects needs a frame to catch up before setting values, total delay 25ms
+			effect1.value = pad.data.effect1
+			effect2.value = pad.data.effect2
+			effect3.value = pad.data.effect3
+			changeTimer.interval = 20
+		}
 
-	function enable(){
-		if(pad != lastPad || isDynamic()){
+		if(changeStep == 2) {
 			knob0.value = pad.getKnob0Value()
 			knob1.value = pad.getKnob1Value()
 			knob2.value = pad.getKnob2Value()
 			knob3.value = pad.getKnob3Value()
+
+			button0.value = true
+			button1.value = pad.isKnob1Dynamic() ? true : pad.data.button1
+			button2.value = pad.isKnob2Dynamic() ? true : pad.data.button2
+			button3.value = pad.isKnob3Dynamic() ? true : pad.data.button3
+
+			focusedDeck.value = true
 		}
 
-		button0.value = true
-		button1.value = pad.isKnob1Dynamic() ? true : pad.data.button1
-		button2.value = pad.isKnob2Dynamic() ? true : pad.data.button2
-		button3.value = pad.isKnob3Dynamic() ? true : pad.data.button3
+		if(changeStep < 2)
+			changeTimer.restart()
+	}
+
+	//-----------------------------------------------------------------------------------------------------------------------------------
+
+	function enable(){
+		unitMode.value = pad.isGroup() ? FxType.Group : FxType.Single
 		
-		lastPad = pad
-		focusedDeck.value = true
+		pad.enabled = true
+		changeStep = 0
+		changeTimer.interval = 5
+		changeTimer.restart()
 	}
 
 	//-----------------------------------------------------------------------------------------------------------------------------------
 
 	function disable(){
-		if(pad == null) return
-
-		focusedDeck.value = false
-		holdPadFX_tick.stop()
+		changeTimer.stop()
+		effectTimer.stop()
 		pad.enabled = false
-
+		focusedDeck.value = false
+		
 		button0.value = false
 		button1.value = false 
 		button2.value = false
@@ -108,55 +120,47 @@ Module {
 
 	//-----------------------------------------------------------------------------------------------------------------------------------
 
-	function handleButton(button) {
-		if(focusedDeck.value == false || (pad != null && pad.enabled == false)) return;
-
-		if(!isActive())
-			disable()
-	}
-
-	//-----------------------------------------------------------------------------------------------------------------------------------
-
 	function pressHandler(target){
 		// Determine the pad state
+		
+		changeTimer.stop()
+		pressTimer.stop()
+		effectTimer.stop()
+
 		if (pad != target) {
 			if ( pad != null ){
 				pad.enabled = false
-				lastPad = pad
 			}
 
 			pad = target
-			pad.enabled = true
-
-			unitMode.value = pad.isGroup() ? FxType.Group : FxType.Single
-			effect1.value = pad.data.effect1
-			effect2.value = pad.data.effect2
-			effect3.value = pad.data.effect3
+			enable()
 		}
 		else {
-			pad.enabled = !pad.enabled
+			if(pad.enabled){
+				disable()
+				return
+			}
+			else{
+				enable()
+			}
+
 		}
 		
-		// NOTE : This if statement makes the Dynamic effects press+hold only
-		if(!isDynamic())
+		// NOTE : This statement makes the Dynamic effects press+hold only
+		if(pad.isDynamic())
 			pressTimer.restart()
 		
-		holdPadFX_tick.restart()
+		effectTimer.restart()
 	}
 
 	//-----------------------------------------------------------------------------------------------------------------------------------
 
 	function releaseHander(index){
-		// Toggle Click
-		if (pressTimer.running){
-			if(!pad.enabled){
-				disable()
-			}
-			return
+		if (pressTimer.running) {
+			return // Toggle Release
 		}
 		
-		// Hold Release
-		disable()
+		disable() // Hold Release
 	}
 
 	//-----------------------------------------------------------------------------------------------------------------------------------
@@ -169,7 +173,7 @@ Module {
 
 		value += payload.delta/frameInc
 		
-		if(value >= payload.max){
+		if(value >= payload.max) {
 			value = payload.max
 		} else if(value <= payload.min){
 			value = payload.min
@@ -182,13 +186,8 @@ Module {
 
 	function onTick(){
 		if(pad == null) return;
-		
-		// Initialize the effects levels
-		if(pad.enabled && !isActive()){
-			enable()
-		}		
 
-		if(isDynamic()){
+		if(pad.isDynamic()){
 			knob0.value = getDelta(knob0.value, pad.data.knob0)
 			knob1.value = getDelta(knob1.value, pad.data.knob1)
 			knob2.value = getDelta(knob2.value, pad.data.knob2)

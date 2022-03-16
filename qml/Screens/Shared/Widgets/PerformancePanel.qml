@@ -40,23 +40,23 @@ Item {
   //readonly property variant padsFXSlot2Colors: [ getColor(instantFXs.iFX9Color), getColor(instantFXs.iFX10Color), getColor(instantFXs.iFX11Color), getColor(instantFXs.iFX12Color), getColor(instantFXs.iFX13Color), getColor(instantFXs.iFX14Color), getColor(instantFXs.iFX15Color), getColor(instantFXs.iFX16Color) ]
 
   function getColor(iFXColor) {
-      if (iFXColor == "Red") return colors.red
-      else if (iFXColor == "Dark Orange") return colors.darkOrange
-      else if (iFXColor == "Light Orange") return colors.lightOrange
-      else if (iFXColor == "Warm Yellow") return colors.warmYellow
-      else if (iFXColor == "Yellow") return colors.yellow
-      else if (iFXColor == "Lime") return colors.lime
-      else if (iFXColor == "Green") return colors.green
-      else if (iFXColor == "Mint") return colors.mint
-      else if (iFXColor == "Cyan") return colors.cyan
-      else if (iFXColor == "Turquoise") return colors.turquoise
-      else if (iFXColor == "Blue") return colors.blue
-      else if (iFXColor == "Plum") return colors.plum
-      else if (iFXColor == "Violet") return colors.violet
-      else if (iFXColor == "Purple") return colors.purple
-      else if (iFXColor == "Magenta") return colors.magenta
-      else if (iFXColor == "Fuchsia") return colors.fuchsia
-      else return "white"
+		if (iFXColor == "Red") 			return colors.red
+		if (iFXColor == "Dark Orange") 	return colors.darkOrange
+		if (iFXColor == "Light Orange") return colors.lightOrange
+		if (iFXColor == "Warm Yellow") 	return colors.warmYellow
+		if (iFXColor == "Yellow") 		return colors.yellow
+		if (iFXColor == "Lime") 		return colors.lime
+		if (iFXColor == "Green") 		return colors.green
+		if (iFXColor == "Mint") 		return colors.mint
+		if (iFXColor == "Cyan") 		return colors.cyan
+		if (iFXColor == "Turquoise") 	return colors.turquoise
+		if (iFXColor == "Blue") 		return colors.blue
+		if (iFXColor == "Plum") 		return colors.plum
+		if (iFXColor == "Violet") 		return colors.violet
+		if (iFXColor == "Purple") 		return colors.purple
+		if (iFXColor == "Magenta") 		return colors.magenta
+		if (iFXColor == "Fuchsia") 		return colors.fuchsia
+		return "white"
   }
 
   function performancePadsDisplayNames(index, exists, name){
@@ -81,7 +81,7 @@ Item {
     else if (activePadsMode.value == PadsMode.effects) {
         //if (slotPadsFX.value == 1) return getColor(pads[index].color)
         //else if (slotPadsFX.value == 2) return getColor(pads[index+7].color)
-        return pads[index + (7*(slotPadsFX.value-1))].color
+        return getColor(pads[index + (7*(slotPadsFX.value-1))].color);
     }
     else if (type != -1 && exists && exists > 0) { return hotcueColors[type]}
     else { return colors.colorBgEmpty}

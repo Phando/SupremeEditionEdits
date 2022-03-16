@@ -14,27 +14,11 @@ Module {
 	property string surface: "path"
 
 	property bool shift : false;
-	property bool enabled : false;
-	
     property int deckId : 0;
     
    	InstantFXs { id: effects }
 	property var pads : effects.pads
 	
-    //-----------------------------------------------------------------------------------------------------------------------------------
-
-	function pressHandler(pad){
-		var fxUnit = pad.isDynamic() ? fxUnit2 : fxUnit1
-		fxUnit.pressHandler(pad)
-	}
-
-    //-----------------------------------------------------------------------------------------------------------------------------------
-
-	function releaseHander(pad) {
-		var fxUnit = pad.isDynamic() ? fxUnit2 : fxUnit1
-		fxUnit.releaseHander(pad)
-    }
-
     // FX Units
 	//-----------------------------------------------------------------------------------------------------------------------------------
 
@@ -110,6 +94,22 @@ Module {
         }
     }
 
+    //-----------------------------------------------------------------------------------------------------------------------------------
+
 	Component.onCompleted: {
 	}
+
+    //-----------------------------------------------------------------------------------------------------------------------------------
+
+	function pressHandler(pad){
+		var fxUnit = pad.isDynamic() ? fxUnit2 : fxUnit1
+		fxUnit.pressHandler(pad)
+	}
+
+    //-----------------------------------------------------------------------------------------------------------------------------------
+
+	function releaseHander(pad) {
+		var fxUnit = pad.isDynamic() ? fxUnit2 : fxUnit1
+		fxUnit.releaseHander(pad)
+    }
 }

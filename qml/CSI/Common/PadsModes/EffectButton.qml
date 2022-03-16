@@ -9,10 +9,13 @@ ButtonScriptAdapter {
     property var data : pads[index]
 
     name : String("padFX" + index)
-	color : ledColor()
+	color : padColor()
 	brightness : lightHandler()
 	onPress : pressHandler(this)
 	onRelease: releaseHander(this)
+
+	Component.onCompleted : {
+    }
 
     function getKnob0Value(knob){
 		return _getKnobValue(data.knob0)
@@ -73,27 +76,24 @@ ButtonScriptAdapter {
         return enabled;
 	}
     
-	function ledColor() {
-        let colorName = data.color
-        if (colorName == "Red") return Color.Red
-		else if (colorName == "Dark Orange") return Color.DarkOrange
-		else if (colorName == "Light Orange") return Color.LightOrange
-		else if (colorName == "Warm Yellow") return Color.WarmYellow
-		else if (colorName == "Yellow") return Color.Yellow
-		else if (colorName == "Lime") return Color.Lime
-		else if (colorName == "Green") return Color.Green
-		else if (colorName == "Mint") return Color.Mint
-		else if (colorName == "Cyan") return Color.Cyan
-		else if (colorName == "Turquoise") return Color.Turquoise
-		else if (colorName == "Blue") return Color.Blue
-		else if (colorName == "Plum") return Color.Plum
-		else if (colorName == "Violet") return Color.Violet
-		else if (colorName == "Purple") return Color.Purple
-		else if (colorName == "Magenta") return Color.Magenta
-		else if (colorName == "Fuchsia") return Color.Fuchsia
-		else return Color.White
+	function padColor() {
+		if (data.color == "Red") 			return Color.Red
+		if (data.color == "Dark Orange") 	return Color.DarkOrange
+		if (data.color == "Light Orange")	return Color.LightOrange
+		if (data.color == "Warm Yellow") 	return Color.WarmYellow
+		if (data.color == "Yellow") 		return Color.Yellow
+		if (data.color == "Lime") 			return Color.Lime
+		if (data.color == "Green") 			return Color.Green
+		if (data.color == "Mint") 			return Color.Mint
+		if (data.color == "Cyan") 			return Color.Cyan
+		if (data.color == "Turquoise") 		return Color.Turquoise
+		if (data.color == "Blue") 			return Color.Blue
+		if (data.color == "Plum") 			return Color.Plum
+		if (data.color == "Violet") 		return Color.Violet
+		if (data.color == "Purple") 		return Color.Purple
+		if (data.color == "Magenta") 		return Color.Magenta
+		if (data.color == "Fuchsia") 		return Color.Fuchsia
+		return Color.White
 	}
 
-    Component.onCompleted : {
-    }
 }

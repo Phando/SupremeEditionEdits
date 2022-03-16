@@ -4,6 +4,8 @@ import QtQuick 2.5
 //-----------------------------------------------------------------------------------------------------------------------------------
 // INFORMATION ABOUT FXs
 //-----------------------------------------------------------------------------------------------------------------------------------
+// NOTE: Some single effects knobs and buttons reset the filter and will disable dynamic effects 
+// Try the settings manually before trying to animate them
 
 /*
 Available colors:
@@ -124,9 +126,9 @@ Module {
 		effect1	: 1,	// Delay
 		effect2	: 0,
 		effect3	: 0,
-		knob0	: { value: 0.0, min: 0, max: 0.75, delta: 4 },	// Dry Wet
-		knob1	: { value: 0.5, min: 0, max: 1, delta: 4 },
-		knob2	: 0.5,
+		knob0	: { value: 0.0, min: 0, max: 0.9, delta: 4 }, // Dry Wet
+		knob1	: 0.25, // Seems unanimatable
+		knob2	: { value: 0.0, min: 0, max: 1, delta: 4 },
 		knob3	: { value: 0.35, min: 0, max: 1, delta: 6 },
 		button1	: 0,
 		button2	: 1,
@@ -139,10 +141,10 @@ Module {
 		effect1	: 7,	// Beatmasher2
 		effect2	: 38,	// Event Horizon
 		effect3	: 14,	// Filter:92
-		knob0	: 0.8,	// Dry Wet
+		knob0	: { value: 0.4, min: 0, max: 1, delta: 3 },	// Dry Wet
 		knob1	: 0,	// 1 Measure
 		knob2	: { value: 0.5, min: 0.1, max: 1, delta: -6 },	
-		knob3	: { value: 0.5, min: 0, max: 0.9, delta: 5 },
+		knob3	: { value: 0.4, min: 0, max: 0.95, delta: 5 },
 		button1	: 1,
 		button2	: 0,
 		button3	: 0
@@ -169,10 +171,10 @@ Module {
 		effect1	: 0,	// Empty
 		effect2	: 39,	// [M] Zzzurp
 		effect3	: 41,	// [M] Strrretch
-		knob0	: 0.7,	// Dry Wet
+		knob0	: 0.8,	// Dry Wet
 		knob1	: 0,
-		knob2	: { value: 1, min: 0, max: 1, delta: -150 },
-		knob3	: { value: 0, min: 0, max: 1, delta: 150 },
+		knob2	: { value: 1, min: 0, max: 1, delta: -100 },
+		knob3	: { value: 0, min: 0, max: 1, delta: 100 },
 		button1	: 0,
 		button2	: 0,
 		button3	: 0
@@ -250,9 +252,9 @@ Module {
 		effect1	: 1,	// Delay
 		effect2	: 0,
 		effect3	: 0,
-		knob0	: { value: 0.0, min: 0, max: 0.75, delta: 4 },	// Dry Wet
-		knob1	: { value: 0.5, min: 0, max: 1, delta: 4 },
-		knob2	: 0.5,
+		knob0	: { value: 0.0, min: 0, max: 0.9, delta: 4 }, // Dry Wet
+		knob1	: 0.5,
+		knob2	: { value: 0.5, min: 0, max: 1, delta: 4 },
 		knob3	: { value: 0.35, min: 0, max: 1, delta: 6 },
 		button1	: 0,
 		button2	: 1,
