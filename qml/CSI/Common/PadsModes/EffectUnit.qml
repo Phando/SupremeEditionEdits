@@ -147,7 +147,7 @@ Module {
 		}
 		
 		// NOTE : This statement makes the Dynamic effects press+hold only
-		if(pad.isDynamic())
+		if(!pad.isDynamic())
 			pressTimer.restart()
 		
 		effectTimer.restart()
