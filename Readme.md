@@ -88,8 +88,5 @@ A dynamic effect has animated values. In order to make an effect dynamic, the kn
 
 ### Issues
 
-Seeing the following errors/warnings on startup. They don't seem to effect runtime. 
-
-- qml/Screens/Defines/Colors.qml:513: TypeError: Value is undefined and could not be converted to an object
-- qml/Screens/Defines/Colors.qml:513: TypeError: Cannot read property 'low1' of undefined
-- qml/CSI/S5/S5Deck.qml:249:3: Unable to assign [undefined] to bool
+Some single effects mode buttons and values will reset the effect keeping it from being enabled. 
+- Delay's Filter settins is one such value
