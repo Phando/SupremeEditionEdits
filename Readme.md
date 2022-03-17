@@ -5,7 +5,7 @@ This mod is based on the work of Aleix Jiménez and his badass [Supreme Edition 
 
 Inspired by DJ Tech Tools [One Button Builds](https://djtechtools.com/2014/02/10/creating-one-button-fx-builds-in-traktor).
 
-See it in action: [here](https://youtu.be/GomKd7v-qL8).
+Demo Video: [here](https://youtu.be/KyDbv3WFBFE).
 
 ### Features:
 
