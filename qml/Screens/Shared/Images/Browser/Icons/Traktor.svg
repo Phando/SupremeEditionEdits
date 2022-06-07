@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 25.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1024 1024" style="enable-background:new 0 0 1024 1024;" xml:space="preserve">
+<style type="text/css">
+	.st0{display:none;}
+	.st1{display:inline;}
+	.st2{fill:#FFFFFF;}
+	.st3{display:inline;fill:#FFFFFF;}
+</style>
+<g id="Logo">
+	<g id="Internal_Circle">
+		<g id="Constructor_2_" class="st0">
+			<circle id="Circle_3_" class="st1" cx="512" cy="512" r="337.92"/>
+			<g id="Transparency_3_" class="st1">
+				<g id="X_1_">
+					
+						<rect x="163.71" y="466.44" transform="matrix(0.8434 -0.5373 0.5373 0.8434 -193.9442 354.1756)" class="st2" width="693.76" height="86.69"/>
+					
+						<rect x="165.12" y="466.03" transform="matrix(0.8434 0.5373 -0.5373 0.8434 355.2806 -194.9137)" class="st2" width="693.76" height="91.94"/>
+				</g>
+				<path id="Semicircle__x28_Bottom_x29__1_" class="st2" d="M512,512l-151.14,96.28c32.87,51.59,89.96,82.92,151.14,82.92
+					s118.27-31.32,151.14-82.92L512,512z"/>
+				<path id="Semicircle__x28_TOP_x29__1_" class="st2" d="M512,512l151.14-96.28C630.27,364.12,573.17,332.8,512,332.8
+					s-118.27,31.32-151.14,82.92L512,512z"/>
+			</g>
+		</g>
+		<g id="Shape_1_">
+			<path d="M849.92,512c0-52.27-11.87-101.76-33.06-145.94L592.67,508.88L819.1,653.14C838.87,610.19,849.92,562.39,849.92,512z"/>
+			<path d="M390.64,380.18c32.69-30.07,75.89-47.38,121.36-47.38s88.67,17.31,121.36,47.38l136.28-86.82
+				C707.65,220.39,615.24,174.08,512,174.08s-195.65,46.31-257.64,119.28L390.64,380.18z"/>
+			<path d="M426.44,512L204.9,370.86c-19.77,42.95-30.82,90.75-30.82,141.14c0,50.39,11.05,98.19,30.82,141.14L426.44,512z"/>
+			<path d="M633.36,643.82C600.67,673.89,557.47,691.2,512,691.2c-47.31,0-92.17-18.75-125.29-51.11l-135.76,86.49
+				c61.98,75.31,155.9,123.34,261.05,123.34c103.24,0,195.65-46.31,257.64-119.28L633.36,643.82z"/>
+		</g>
+	</g>
+	<g id="External_circle">
+		<g id="Constructor_1_" class="st0">
+			<circle id="Circle_2_" class="st1" cx="512" cy="512" r="512"/>
+			<circle id="Transparency_2_" class="st3" cx="512" cy="512" r="424.96"/>
+		</g>
+		<path id="Shape" d="M512,0C229.23,0,0,229.23,0,512s229.23,512,512,512s512-229.23,512-512S794.77,0,512,0z M512,936.96
+			C277.3,936.96,87.04,746.7,87.04,512S277.3,87.04,512,87.04S936.96,277.3,936.96,512S746.7,936.96,512,936.96z"/>
+	</g>
+</g>
+</svg>
